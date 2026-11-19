@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1000" fill="none">
+  <defs>
+    <radialGradient id="violet" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f0c7ff" stop-opacity=".78"/>
+      <stop offset=".18" stop-color="#c86dff" stop-opacity=".66"/>
+      <stop offset=".52" stop-color="#7527c5" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#50109a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amber" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff3ad" stop-opacity=".9"/>
+      <stop offset=".2" stop-color="#ffbd52" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#f47738" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#ef5930" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ribbon" x1="350" y1="800" x2="1500" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8c37de" stop-opacity="0"/>
+      <stop offset=".28" stop-color="#a94fe9" stop-opacity=".38"/>
+      <stop offset=".5" stop-color="#ffb54f" stop-opacity=".45"/>
+      <stop offset=".72" stop-color="#d36aff" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#7c43de" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="cloud" x="-30%" y="-40%" width="160%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".008 .018" numOctaves="3" seed="19" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="58" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="19"/>
+    </filter>
+    <filter id="haze" x="-40%" y="-60%" width="180%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="filament" x="-30%" y="-50%" width="160%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .04" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="34"/>
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <!-- Transparent nebula layers keep the site's text and layout visible. -->
+  <ellipse cx="630" cy="440" rx="610" ry="300" fill="url(#violet)" opacity=".72" filter="url(#haze)"/>
+  <ellipse cx="1120" cy="355" rx="570" ry="285" fill="url(#amber)" opacity=".62" filter="url(#haze)"/>
+  <path d="M80 765C355 420 520 690 760 420S1120 160 1730 90C1430 360 1260 350 1020 620S450 900 80 765Z" fill="url(#ribbon)" opacity=".7" filter="url(#cloud)"/>
+  <path d="M115 655C420 350 520 650 815 390S1260 165 1675 115" stroke="#bb70ff" stroke-opacity=".35" stroke-width="96" stroke-linecap="round" filter="url(#filament)"/>
+  <path d="M240 795C550 550 685 770 930 505S1305 270 1580 160" stroke="#ffbb62" stroke-opacity=".31" stroke-width="58" stroke-linecap="round" filter="url(#filament)"/>
+  <ellipse cx="880" cy="475" rx="620" ry="210" fill="url(#violet)" opacity=".28" filter="url(#haze)"/>
+</svg>
