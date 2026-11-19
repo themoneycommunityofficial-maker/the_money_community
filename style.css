@@ -2,12 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(46, 72, 140, 0.55), transparent 58%),
-    radial-gradient(2px 2px at 18% 24%, rgba(255,255,255,.9) 50%, transparent 100%),
-    radial-gradient(1px 1px at 78% 16%, rgba(190,220,255,.9) 50%, transparent 100%),
-    radial-gradient(1px 1px at 62% 68%, rgba(255,255,255,.75) 50%, transparent 100%),
-    radial-gradient(2px 2px at 90% 82%, rgba(190,220,255,.75) 50%, transparent 100%),
-    #070b1b;
+    radial-gradient(ellipse at 50% 35%, rgba(38, 65, 133, .3), transparent 55%),
+    radial-gradient(ellipse at 12% 78%, rgba(39, 30, 95, .28), transparent 40%),
+    #030611;
   background-attachment: fixed;
   color: white;
   text-align: center;
@@ -34,7 +31,7 @@ body > :not(.starfield) {
   height: var(--size);
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 8px 2px rgba(173, 213, 255, .8);
+  box-shadow: 0 0 10px 3px rgba(173, 213, 255, .9);
   opacity: 0;
   animation: star-fall var(--duration) var(--delay) linear infinite;
   will-change: transform, opacity;
@@ -43,30 +40,78 @@ body > :not(.starfield) {
 .falling-star::after {
   content: "";
   position: absolute;
-  width: calc(var(--size) * 1.8);
-  height: clamp(35px, 7vh, 75px);
+  width: calc(var(--size) * .8);
+  height: clamp(90px, 15vh, 170px);
   left: 50%;
   bottom: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(to top, transparent, rgba(173, 213, 255, .55));
-  filter: blur(1px);
+  transform: translateX(-50%) rotate(-30deg);
+  transform-origin: bottom center;
+  background: linear-gradient(to top, rgba(220, 239, 255, .72), transparent);
+  filter: drop-shadow(0 0 4px rgba(127, 183, 255, .65));
+}
+
+.distant-star {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: #eaf3ff;
+  box-shadow: 0 0 4px rgba(201, 225, 255, .8);
+  opacity: .68;
+  animation: star-twinkle var(--twinkle) var(--delay) ease-in-out infinite alternate;
+}
+
+.bright-star {
+  opacity: .9;
+  box-shadow: 0 0 9px 2px rgba(178, 211, 255, .55);
+}
+
+.bright-star::before,
+.bright-star::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: linear-gradient(90deg, transparent, rgba(224, 239, 255, .85), transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.bright-star::before {
+  width: 15px;
+  height: 1px;
+}
+
+.bright-star::after {
+  width: 1px;
+  height: 15px;
+}
+
+@keyframes star-twinkle {
+  from { opacity: .35; }
+  to { opacity: 1; }
 }
 
 @keyframes star-fall {
   0% { transform: translate3d(0, 0, 0); opacity: 0; }
-  8% { opacity: .9; }
-  82% { opacity: .75; }
+  10% { opacity: .95; }
+  75% { opacity: .8; }
   100% { transform: translate3d(var(--drift), 116vh, 0); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .distant-star { animation: none; opacity: .8; }
   .falling-star { animation: none; opacity: .5; }
   .falling-star::after { display: none; }
 }
 
 header {
   padding: 40px;
-  background: #1e293b;
+  background: rgba(10, 17, 38, .72);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(156, 190, 255, .12);
   text-align: center;
 }
 
@@ -100,7 +145,7 @@ iframe {
 .card {
   width: 300px;
   padding: 20px;
-  background: #1e293b;
+  background: rgba(16, 26, 54, .82);
   border-radius: 10px;
 }
 
@@ -112,7 +157,8 @@ button {
 
 footer {
   padding: 20px;
-  background: #020617;
+  background: rgba(3, 6, 17, .82);
+  border-top: 1px solid rgba(156, 190, 255, .12);
 }
 
 .intro {
@@ -173,6 +219,8 @@ footer {
   color: white;
 
   position: relative;
+  background-color: rgba(16, 26, 54, .82);
+  backdrop-filter: blur(3px);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 

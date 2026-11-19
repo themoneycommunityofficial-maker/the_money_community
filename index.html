@@ -164,19 +164,31 @@
 </footer>
 
 <script>
-  // Stelle e scie generate in modo leggero, senza immagini o librerie esterne.
+  // Campo stellare a più profondità e poche meteore luminose.
   const starfield = document.querySelector(".starfield");
-  const starCount = 32;
+  const starCount = 150;
 
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement("span");
-    star.className = "falling-star";
+    const bright = i % 17 === 0;
+    star.className = bright ? "distant-star bright-star" : "distant-star";
     star.style.setProperty("--x", `${Math.random() * 100}vw`);
-    star.style.setProperty("--drift", `${8 + Math.random() * 24}vw`);
-    star.style.setProperty("--size", `${1 + Math.random() * 3}px`);
-    star.style.setProperty("--duration", `${5 + Math.random() * 9}s`);
+    star.style.setProperty("--y", `${Math.random() * 100}vh`);
+    star.style.setProperty("--size", `${bright ? 1.5 + Math.random() * 1.5 : 0.6 + Math.random() * 1.2}px`);
+    star.style.setProperty("--twinkle", `${3 + Math.random() * 5}s`);
     star.style.setProperty("--delay", `${-Math.random() * 14}s`);
     starfield.appendChild(star);
+  }
+
+  for (let i = 0; i < 7; i++) {
+    const meteor = document.createElement("span");
+    meteor.className = "falling-star";
+    meteor.style.setProperty("--x", `${Math.random() * 100}vw`);
+    meteor.style.setProperty("--drift", `${12 + Math.random() * 22}vw`);
+    meteor.style.setProperty("--size", `${1.5 + Math.random() * 2}px`);
+    meteor.style.setProperty("--duration", `${8 + Math.random() * 10}s`);
+    meteor.style.setProperty("--delay", `${-Math.random() * 18}s`);
+    starfield.appendChild(meteor);
   }
 
   const target = 1000;
