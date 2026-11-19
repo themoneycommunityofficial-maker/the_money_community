@@ -1,9 +1,67 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #0f172a;
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(46, 72, 140, 0.55), transparent 58%),
+    radial-gradient(2px 2px at 18% 24%, rgba(255,255,255,.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 78% 16%, rgba(190,220,255,.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 62% 68%, rgba(255,255,255,.75) 50%, transparent 100%),
+    radial-gradient(2px 2px at 90% 82%, rgba(190,220,255,.75) 50%, transparent 100%),
+    #070b1b;
+  background-attachment: fixed;
   color: white;
   text-align: center;
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > :not(.starfield) {
+  position: relative;
+  z-index: 1;
+}
+
+.falling-star {
+  position: absolute;
+  top: -8vh;
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(173, 213, 255, .8);
+  opacity: 0;
+  animation: star-fall var(--duration) var(--delay) linear infinite;
+  will-change: transform, opacity;
+}
+
+.falling-star::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) * 1.8);
+  height: clamp(35px, 7vh, 75px);
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, transparent, rgba(173, 213, 255, .55));
+  filter: blur(1px);
+}
+
+@keyframes star-fall {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  8% { opacity: .9; }
+  82% { opacity: .75; }
+  100% { transform: translate3d(var(--drift), 116vh, 0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-star { animation: none; opacity: .5; }
+  .falling-star::after { display: none; }
 }
 
 header {

@@ -8,6 +8,8 @@
 
 <body>
 
+<div class="starfield" aria-hidden="true"></div>
+
 <header>
   <img 
     src="img/logo.jpg" 
@@ -162,6 +164,21 @@
 </footer>
 
 <script>
+  // Stelle e scie generate in modo leggero, senza immagini o librerie esterne.
+  const starfield = document.querySelector(".starfield");
+  const starCount = 32;
+
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement("span");
+    star.className = "falling-star";
+    star.style.setProperty("--x", `${Math.random() * 100}vw`);
+    star.style.setProperty("--drift", `${8 + Math.random() * 24}vw`);
+    star.style.setProperty("--size", `${1 + Math.random() * 3}px`);
+    star.style.setProperty("--duration", `${5 + Math.random() * 9}s`);
+    star.style.setProperty("--delay", `${-Math.random() * 14}s`);
+    starfield.appendChild(star);
+  }
+
   const target = 1000;
   let count = 0;
 
