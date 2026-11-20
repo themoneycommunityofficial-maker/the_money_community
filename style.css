@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background:
-    linear-gradient(rgba(3, 6, 17, .18), rgba(3, 6, 17, .32)),
+    linear-gradient(rgba(3, 6, 17, .46), rgba(3, 6, 17, .52)),
     url("img/nebula-photo.png") center center / cover fixed no-repeat,
     radial-gradient(ellipse at 50% 35%, rgba(38, 65, 133, .3), transparent 55%),
     radial-gradient(ellipse at 12% 78%, rgba(39, 30, 95, .28), transparent 40%),
