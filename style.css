@@ -267,6 +267,23 @@ body > :not(.starfield) {
 
 .about-dialog p:last-child { margin-bottom: 0; }
 
+@media (min-width: 521px) and (max-width: 850px) {
+  .site-header { padding: 12px 18px; }
+  .brand-banner { gap: 14px; padding-right: 108px; }
+  .brand-logo { width: 72px; }
+  .brand-copy h1 {
+    font-size: clamp(1rem, 3vw, 1.55rem);
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .brand-copy p {
+    margin-top: 6px;
+    font-size: clamp(.74rem, 1.6vw, .92rem);
+    white-space: nowrap;
+  }
+  .about-link { padding: 7px 12px; font-size: .86rem; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .about-dialog[open] { animation: about-dialog-in .2s ease-out both; }
 }
@@ -297,6 +314,21 @@ body > :not(.starfield) {
     font-size: .85rem;
   }
   .about-dialog { border-radius: 18px; }
+  .funds-hero {
+    width: calc(100% - 24px);
+    gap: 10px;
+    margin: 16px auto 38px;
+    padding: 12px 14px;
+    border-radius: 20px;
+  }
+  .funds-mascot {
+    flex-basis: clamp(88px, 25vw, 120px);
+    width: clamp(88px, 25vw, 120px);
+  }
+  .fund-amount { font-size: clamp(2.35rem, 10vw, 3rem); }
+  .funds-copy h2 { margin-top: 8px; font-size: clamp(.92rem, 3.6vw, 1.1rem); }
+  .closing-message { margin: 36px auto 24px; padding: 20px 18px; border-radius: 16px; }
+  .closing-message p { margin-bottom: 12px; line-height: 1.55; }
 }
 
 .video-container {
@@ -367,27 +399,83 @@ footer {
   margin: auto;
 }
 
-.piggy-bank {
-  margin-top: 20px;
-  font-size: 35px;
-  animation: bounce 2s infinite;
-  transition: transform 0.3s;
+.funds-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 5vw, 62px);
+  width: min(calc(100% - 40px), 1120px);
+  box-sizing: border-box;
+  margin: clamp(20px, 4vw, 38px) auto 58px;
+  padding: clamp(18px, 3vw, 34px) clamp(22px, 5vw, 66px);
+  border: 1px solid rgba(255, 201, 83, .48);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 177, 46, .14), transparent 38%),
+    linear-gradient(112deg, rgba(9, 17, 42, .95), rgba(18, 20, 43, .9) 66%, rgba(70, 25, 39, .82));
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 240, 192, .08);
 }
 
-.piggy-bank .amount {
-  color: #28a745; /* verde denaro, puoi scegliere un verde più chiaro o più scuro */
-  font-weight: bold;
-  font-size: 28px;
-}
-.amount {
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 10px;
+.funds-mascot {
+  flex: 0 0 clamp(140px, 19vw, 210px);
+  width: clamp(140px, 19vw, 210px);
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .25));
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.funds-mascot svg { display: block; width: 100%; height: auto; }
+
+.funds-copy {
+  min-width: 0;
+  text-align: left;
+}
+
+.fund-amount {
+  color: #ffd36b;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  font-weight: 850;
+  letter-spacing: -.045em;
+  line-height: .98;
+  text-shadow: 0 4px 22px rgba(255, 169, 26, .25);
+  white-space: nowrap;
+}
+
+.fund-amount span {
+  color: #fff7df;
+}
+
+.funds-copy h2 {
+  margin: 13px 0 0;
+  color: #fff;
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: left;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+}
+
+.closing-message {
+  width: min(calc(100% - 36px), 980px);
+  box-sizing: border-box;
+  margin: 48px auto 34px;
+  padding: 26px clamp(20px, 4vw, 48px);
+  border: 1px solid rgba(156, 190, 255, .16);
+  border-radius: 20px;
+  background: rgba(5, 12, 30, .68);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .18);
+}
+
+.closing-message p {
+  max-width: 850px;
+  margin: 0 auto 14px;
+  color: #f0f2ff;
+  font-size: clamp(1rem, 2vw, 1.16rem);
+  line-height: 1.7;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .65);
+}
+
+.closing-message p:last-child {
+  margin-bottom: 0;
+  color: #ffd779;
 }
 
 .projects {
@@ -490,14 +578,6 @@ footer {
 .text {
   flex: 1;
   min-width: 250px;
-}
-
-.intro p {
-  margin-bottom: 60px; /* aumenta questo valore quanto vuoi */
-}
-
-.piggy-bank {
-  margin-top: 40px;
 }
 
 .video {

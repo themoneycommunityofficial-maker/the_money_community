@@ -52,21 +52,53 @@
   </p>
 </dialog>
 
-<section class="intro">
-  <p>
-    Attraverso i contenuti e la crescita del canale sosteniamo progetti e bisogni reali delle persone, in modo trasparente, insieme.
-  </p>
-
-  <p>
-    Trasformiamo il tempo online in Valore reale per la Community.
-  </p>
-
-  <div class="piggy-bank">
-    🐷
-    <div class="amount">
-      € <span id="counter">0</span>
-    </div>
-    <p>Fondi rimasti nel salvadanaio</p>
+<section class="funds-hero" aria-label="Fondi rimasti nel salvadanaio">
+  <div class="funds-mascot" aria-hidden="true">
+    <svg viewBox="0 0 300 200" role="img">
+      <defs>
+        <linearGradient id="cape-red" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ff665c" />
+          <stop offset="1" stop-color="#a91432" />
+        </linearGradient>
+        <linearGradient id="pig-pink" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffd0c5" />
+          <stop offset="1" stop-color="#f28e92" />
+        </linearGradient>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fff1a6" />
+          <stop offset=".52" stop-color="#ffc432" />
+          <stop offset="1" stop-color="#d88308" />
+        </linearGradient>
+        <filter id="pig-shadow" x="-30%" y="-30%" width="160%" height="180%">
+          <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#030611" flood-opacity=".45" />
+        </filter>
+      </defs>
+      <ellipse cx="151" cy="181" rx="102" ry="9" fill="#020715" opacity=".55" />
+      <g filter="url(#pig-shadow)">
+        <path d="M157 78C123 57 92 38 55 43 71 55 76 66 65 76 48 91 35 103 24 126c25-12 47-17 67-12-13 11-22 24-30 42 43-6 75-20 106-45l20-34z" fill="url(#cape-red)" stroke="url(#gold)" stroke-width="6" stroke-linejoin="round" />
+        <path d="M137 77C110 59 87 51 62 52c17 12 24 24 19 37m48 18c-25 4-43 17-58 35" fill="none" stroke="#ffb85e" stroke-width="4" stroke-linecap="round" opacity=".9" />
+        <path d="M48 93c11-10 24-17 39-20l15 17c-3 15-13 27-28 36-13-6-22-17-26-33z" fill="url(#gold)" stroke="#fff1a6" stroke-width="3" stroke-linejoin="round" />
+        <text x="73" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#952039">$</text>
+        <path d="M110 112c-12-10-21-12-33-9-11 5-12 16-2 19 10 3 19-2 24-9m89 20c-12-4-17 2-13 9 4 7 13 5 19 0" fill="none" stroke="#e87d85" stroke-width="5" stroke-linecap="round" />
+        <ellipse cx="158" cy="118" rx="62" ry="34" transform="rotate(-13 158 118)" fill="url(#pig-pink)" stroke="#e87d85" stroke-width="3" />
+        <path d="M130 133l-12 18 14 5 15-17m30-4 9 20 15-3-8-25" fill="#f29a9d" stroke="#c65e69" stroke-width="3" stroke-linejoin="round" />
+        <path d="M151 65c-8-17-3-29 9-33 13 5 17 16 16 30m21 1c7-17 19-22 30-16 5 11 0 22-10 30" fill="#f6a0a0" stroke="#e87d85" stroke-width="4" stroke-linejoin="round" />
+        <ellipse cx="184" cy="83" rx="36" ry="34" fill="url(#pig-pink)" stroke="#e87d85" stroke-width="3" />
+        <ellipse cx="171" cy="75" rx="4" ry="6" fill="#42243a" />
+        <ellipse cx="197" cy="75" rx="4" ry="6" fill="#42243a" />
+        <ellipse cx="184" cy="96" rx="17" ry="12" fill="#f1828b" stroke="#e87d85" stroke-width="2" />
+        <ellipse cx="178" cy="95" rx="2.2" ry="3" fill="#a94758" />
+        <ellipse cx="190" cy="95" rx="2.2" ry="3" fill="#a94758" />
+        <path d="M176 107c5 4 11 4 16 0" fill="none" stroke="#a94758" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M224 109l30-13m-29 25 29 6" stroke="#ffd16a" stroke-width="5" stroke-linecap="round" />
+        <path d="M129 154h15m44-5 14 5" stroke="#b95b61" stroke-width="5" stroke-linecap="round" />
+      </g>
+      <path d="M250 72l13-7m-9 28 15-1" stroke="#fff1a6" stroke-width="3" stroke-linecap="round" opacity=".9" />
+    </svg>
+  </div>
+  <div class="funds-copy">
+    <div class="fund-amount">€ <span id="counter">0</span></div>
+    <h2>Fondi rimasti nel salvadanaio</h2>
   </div>
 </section>
 
@@ -195,6 +227,15 @@
   <a class="watch-video-link" href="https://www.youtube.com/watch?v=ZMh2CmLdQhQ" target="_blank" rel="noopener">
     Guarda il video su YouTube
   </a>
+</section>
+
+<section class="intro closing-message">
+  <p>
+    Attraverso i contenuti e la crescita del canale sosteniamo progetti e bisogni reali delle persone, in modo trasparente, insieme.
+  </p>
+  <p>
+    Trasformiamo il tempo online in Valore reale per la Community.
+  </p>
 </section>
 
 <footer>
