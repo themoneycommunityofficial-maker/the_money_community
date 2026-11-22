@@ -21,8 +21,36 @@
       <h1>The Money Community</h1>
       <p>Il valore che torna nelle mani delle persone</p>
     </div>
+    <button
+      type="button"
+      class="about-link"
+      id="about-open"
+      aria-haspopup="dialog"
+      aria-controls="about-dialog"
+    >Chi siamo</button>
   </div>
 </header>
+
+<dialog class="about-dialog" id="about-dialog" aria-labelledby="about-title">
+  <div class="about-dialog-topline">
+    <span>IL NOSTRO PROGETTO</span>
+    <button type="button" class="about-close" aria-label="Chiudi" autofocus>&times;</button>
+  </div>
+  <h2 id="about-title">The Money Community</h2>
+  <p>
+    Vogliamo creare un movimento sociale che utilizzi i ricavi pubblicitari del nostro canale YouTube
+    per aiutare le persone a realizzare i propri sogni lavorativi.
+  </p>
+  <p>
+    Sosteniamo chi vuole dare vita a una nuova attività o impresa e chi ne ha già una e vuole farla
+    crescere. Vogliamo dare una mano a chi ha un'idea nel cassetto, a chi ha paura di fare il primo
+    passo e a chi cerca una possibilità per migliorare ciò che ha già costruito.
+  </p>
+  <p>
+    Le proposte vengono condivise con la community, che può partecipare e votare. Non chiediamo
+    soldi alle persone: il nostro obiettivo è trasformare la crescita del canale in un aiuto concreto.
+  </p>
+</dialog>
 
 <section class="intro">
   <p>
@@ -156,12 +184,17 @@
   <div class="video-container">
     <iframe 
       src="https://www.youtube-nocookie.com/embed/ZMh2CmLdQhQ"
+      title="Come funziona The Money Community"
       width="560"
       height="315"
-      frameborder="0"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen>
     </iframe>
   </div>
+  <a class="watch-video-link" href="https://www.youtube.com/watch?v=ZMh2CmLdQhQ" target="_blank" rel="noopener">
+    Guarda il video su YouTube
+  </a>
 </section>
 
 <footer>
@@ -214,6 +247,16 @@
   };
 
   updateCounter();
+
+  const aboutDialog = document.getElementById("about-dialog");
+  const aboutOpen = document.getElementById("about-open");
+  const aboutClose = aboutDialog.querySelector(".about-close");
+
+  aboutOpen.addEventListener("click", () => aboutDialog.showModal());
+  aboutClose.addEventListener("click", () => aboutDialog.close());
+  aboutDialog.addEventListener("click", (event) => {
+    if (event.target === aboutDialog) aboutDialog.close();
+  });
 </script>
 
 </body>
