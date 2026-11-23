@@ -52,7 +52,7 @@
   </p>
 </dialog>
 
-<section class="funds-hero" aria-label="Fondi rimasti nel salvadanaio">
+<button type="button" class="funds-hero" id="funds-open" aria-haspopup="dialog" aria-controls="funds-dialog">
   <div class="funds-mascot" aria-hidden="true">
     <svg viewBox="0 0 300 200" role="img">
       <defs>
@@ -100,7 +100,26 @@
     <div class="fund-amount">€ <span id="counter">0</span></div>
     <h2>Fondi rimasti nel salvadanaio</h2>
   </div>
-</section>
+</button>
+
+<dialog class="about-dialog funds-dialog" id="funds-dialog" aria-labelledby="funds-title">
+  <div class="about-dialog-topline">
+    <span>IL FONDO DELLA COMMUNITY</span>
+    <button type="button" class="about-close" aria-label="Chiudi" autofocus>&times;</button>
+  </div>
+  <h2 id="funds-title">Un aiuto per i sogni che diventano progetti</h2>
+  <div class="fund-dialog-flight-layer" aria-hidden="true">
+    <span class="fund-dialog-flying-pig"></span>
+  </div>
+  <p>
+    I fondi rimasti nel salvadanaio saranno destinati a chi ha bisogno di un aiuto economico
+    per avviare una nuova attività o far crescere la propria.
+  </p>
+  <p>
+    Le proposte saranno condivise con la community e sottoposte al voto, così che siano le persone
+    a scegliere insieme quale progetto sostenere.
+  </p>
+</dialog>
 
 <!--
 <section class="projects">
@@ -315,6 +334,57 @@
   aboutClose.addEventListener("click", () => aboutDialog.close());
   aboutDialog.addEventListener("click", (event) => {
     if (event.target === aboutDialog) aboutDialog.close();
+  });
+
+  const fundsDialog = document.getElementById("funds-dialog");
+  const fundsOpen = document.getElementById("funds-open");
+  const fundsClose = fundsDialog.querySelector(".about-close");
+  const flyingPig = fundsDialog.querySelector(".fund-dialog-flying-pig");
+  const pigIllustration = document.querySelector(".funds-mascot svg");
+
+  flyingPig.appendChild(pigIllustration.cloneNode(true));
+
+  let pigRoamAnimation;
+  const startPigRoam = () => {
+    pigRoamAnimation?.cancel();
+
+    const roamArea = fundsDialog.querySelector(".fund-dialog-flight-layer");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      flyingPig.style.left = "50%";
+      flyingPig.style.top = "50%";
+      flyingPig.style.transform = "translate(-50%, -50%)";
+      return;
+    }
+
+    const maxX = Math.max(0, roamArea.clientWidth - flyingPig.offsetWidth);
+    const maxY = Math.max(0, roamArea.clientHeight - flyingPig.offsetHeight);
+    const steps = 9;
+    const route = Array.from({ length: steps }, (_, index) => ({
+      left: `${Math.random() * maxX}px`,
+      top: `${Math.random() * maxY}px`,
+      transform: `rotate(${Math.random() * 34 - 17}deg) scale(${.88 + Math.random() * .24})`,
+      offset: index / (steps - 1),
+      easing: "ease-in-out"
+    }));
+
+    pigRoamAnimation = flyingPig.animate(route, {
+      duration: 11500,
+      iterations: 1,
+      fill: "forwards"
+    });
+    pigRoamAnimation.onfinish = () => {
+      if (fundsDialog.open) startPigRoam();
+    };
+  };
+
+  fundsOpen.addEventListener("click", () => {
+    fundsDialog.showModal();
+    requestAnimationFrame(startPigRoam);
+  });
+  fundsClose.addEventListener("click", () => fundsDialog.close());
+  fundsDialog.addEventListener("close", () => pigRoamAnimation?.cancel());
+  fundsDialog.addEventListener("click", (event) => {
+    if (event.target === fundsDialog) fundsDialog.close();
   });
 </script>
 
