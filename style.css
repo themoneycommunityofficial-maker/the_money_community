@@ -139,7 +139,9 @@ body > :not(.starfield) {
   flex: 0 0 auto;
   width: clamp(72px, 9vw, 112px);
   aspect-ratio: 1;
-  object-fit: cover;
+  box-sizing: border-box;
+  padding: 6px;
+  object-fit: contain;
   border: 2px solid rgba(255, 195, 55, .7);
   border-radius: 50%;
   box-shadow: 0 0 24px rgba(255, 174, 37, .22);
